@@ -52,9 +52,14 @@
         <div class="flex-center position-ref full-height">
 
             <div class="content">
+
                 <div class="title m-b-md">
-                    Šiuo metu Vilniuje temperatūra: {{ $temperature }} F
+                    Šiuo metu Vilniuje temperatūra: {{ $temperature_celsius }} c
                 </div>
+
+                <div class="title m-b-md">
+                    Šiuo metu Vilniuje temperatūra: {{ $temperature_farenheito }} F
+                </div>                
 
             </div>
         </div>

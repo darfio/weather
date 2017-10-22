@@ -12,8 +12,18 @@ class WeatherController extends Controller
 
     	$yahooWeather = new YahooWeatherServiceProvider();
 		$weather_service = new WeatherService($yahooWeather);
-		$temperature = $weather_service->getTemperature();
+		$temperature_farenheito = $weather_service->getTemperature();
+		$temperature_celsius = $this->farenheito_to_celsius($temperature_farenheito);
 
-    	return view('weather', ['temperature'=>$temperature]);
+		$data = [
+			'temperature_farenheito' => $temperature_farenheito,
+			'temperature_celsius' => $temperature_celsius,
+		];
+    	return view('weather', $data);
     }
+
+    private function farenheito_to_celsius($farenheito){
+		$celsius = ($farenheito - 32) * 5 / 9;
+		return round($celsius);
+	}
 }
